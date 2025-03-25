@@ -79,25 +79,31 @@ int main() {
         // Example: std::cout << "Enter initial balance: ";
         //          std::cin >> initialBalance;
         //          auto account = std::make_unique<BankAccount>("123456", initialBalance);
+        double initialBalance;
+        std::cout << "Enter initial balance: ";
+        std::cin >> initialBalance;
 
-
-        auto account = std::make_unique<BankAccount>("123456", 1000.0); // Example initialization
+        auto account = std::make_unique<BankAccount>("123456", initialBalance); // Example initialization
 
         std::cout << "Bank Account Created: #" << "123456" << std::endl;
 
         // TODO: Allow the user to enter deposit amounts and call deposit() method
-        std::cout << "Depositing $1000..." << std::endl;
-        account->deposit(1000);
+        double depositAmount;
+        std::cout <<"Enter the amount to deposit: ";
+        std::cin >> depositAmount;
+        account->deposit(depositAmount);
+        std::cout << "Sucessfully deposited $" << depositAmount << ". New Balance: $" << account->getBalance() << std::endl;
 
         // TODO: Allow the user to enter withdrawal amounts and call withdraw() method
-        std::cout << "Withdrawing $500..." << std::endl;
-        account->withdraw(500);
-
-        std::cout << "Current Balance: $" << account->getBalance() << std::endl;
+        double withdrawAmount;
+        std::cout << "Enter the amount to withdraw: ";
+        std::cin >> withdrawAmount;
+        account->withdraw(withdrawAmount);
+        std::cout << "Sucessfully withdrawed $" << withdrawAmount << ". New Balance: $" << account->getBalance() << std::endl;
 
         // TODO: Test edge cases - try withdrawing more than available balance
-        std::cout << "Attempting to withdraw $600..." << std::endl;
-        account->withdraw(600); // This should trigger an exception once implemented
+        std::cout << "Attempting to withdraw $999999..." << std::endl;
+        account->withdraw(999999); // This should trigger an exception once implemented
 
     } 
     catch (const std::exception& e) {
