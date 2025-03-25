@@ -4,8 +4,28 @@
 
 // TODO: Define custom exception classes here
 // - NegativeDepositException (for negative deposit attempts)
+class NegativeDepositException : public std::exception {
+public:
+    const char* what() const noexcept override {
+        return "Error: Cannot deposit a negative amount!";
+    }
+};
+
 // - OverdrawException (for withdrawing more than the balance)
+class OverdrawException : public std::exception {
+public:
+    const char* what() const noexcept override {
+        return "Error: Insufficient funds!";
+    }
+};
+
 // - InvalidAccountOperationException (for transactions on a closed account)
+class InvalidAccountOperationException : public std::exception {
+public:
+    const char* what() const noexcept override {
+        return "Error: Account is closed for transactions!";
+    }
+};
 
 class BankAccount {
 private:
@@ -20,12 +40,14 @@ public:
     // Deposit method
     void deposit(double amount) {
         // TODO: Implement exception handling for negative deposits
+
         balance += amount;
     }
 
     // Withdraw method
     void withdraw(double amount) {
         // TODO: Implement exception handling for overdrawing and closed accounts
+
         balance -= amount;
     }
 
@@ -37,6 +59,7 @@ public:
     // Method to close the account
     void closeAccount() {
         // TODO: Prevent further transactions when the account is closed
+
         isActive = false;
     }
 };
@@ -47,6 +70,7 @@ int main() {
         // Example: std::cout << "Enter initial balance: ";
         //          std::cin >> initialBalance;
         //          auto account = std::make_unique<BankAccount>("123456", initialBalance);
+
 
         auto account = std::make_unique<BankAccount>("123456", 1000.0); // Example initialization
 
