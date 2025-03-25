@@ -105,6 +105,14 @@ int main() {
         std::cout << "Attempting to withdraw $999999..." << std::endl;
         account->withdraw(999999); // This should trigger an exception once implemented
 
+        // more test cases (remove comments to test)
+
+        /*
+        std::cout << "Attempting to withdraw $1 from a closed account" << std::endl;
+        account->closeAccount();
+        account->withdraw(1);
+        */
+
     } 
     catch (const std::exception& e) {
         // TODO: Catch and handle exceptions properly
