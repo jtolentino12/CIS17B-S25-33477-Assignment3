@@ -7,7 +7,7 @@
 class NegativeDepositException : public std::exception {
 public:
     const char* what() const noexcept override {
-        return "Error: Cannot deposit a negative amount!";
+        return "Cannot deposit a negative amount!";
     }
 };
 
@@ -15,7 +15,7 @@ public:
 class OverdrawException : public std::exception {
 public:
     const char* what() const noexcept override {
-        return "Error: Insufficient funds!";
+        return "Insufficient funds!";
     }
 };
 
@@ -23,7 +23,7 @@ public:
 class InvalidAccountOperationException : public std::exception {
 public:
     const char* what() const noexcept override {
-        return "Error: Account is closed for transactions!";
+        return "Account is closed for transactions!";
     }
 };
 
@@ -69,7 +69,6 @@ public:
     // Method to close the account
     void closeAccount() {
         // TODO: Prevent further transactions when the account is closed
-        
         isActive = false;
     }
 };
