@@ -40,14 +40,24 @@ public:
     // Deposit method
     void deposit(double amount) {
         // TODO: Implement exception handling for negative deposits
-
+        if (!isActive) {
+            throw InvalidAccountOperationException();
+        }
+        if (amount < 0) {
+            throw NegativeDepositException();
+        }
         balance += amount;
     }
 
     // Withdraw method
     void withdraw(double amount) {
         // TODO: Implement exception handling for overdrawing and closed accounts
-
+        if (!isActive) {
+            throw InvalidAccountOperationException();
+        }
+        if (amount > balance) {
+            throw OverdrawException();
+        }
         balance -= amount;
     }
 
@@ -59,7 +69,7 @@ public:
     // Method to close the account
     void closeAccount() {
         // TODO: Prevent further transactions when the account is closed
-
+        
         isActive = false;
     }
 };
